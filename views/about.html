@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+    a{
+      text-decoration: none;
+    }
+    body {
+      background: white;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255,255,255,0.95);
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #b5651d;
+    }
+
+    .btn-order {
+      background: #b5651d;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      height: 90vh;
+      background: url('about.png') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+    .btn{
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #b5651d;
+      color: #fff;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .about-section{
+      
+      display: flex;
+      max-width: 1200px;
+      margin: 50px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .text{
+      color: black;
+      font-size: larger;
+      flex: 1;
+      padding: 20px;
+    }
+    .image{
+      width: 300px;
+      flex: 1;
+      padding: 20px;
+    }
+</style>
+<link rel="stylesheet" href="footer.css">
+<body>
+     <header>
+    <div class="logo">The Daily Grind</div>
+    <nav>
+      <a href="2">Home</a>
+      <a href="menu">Menu</a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </nav>
+    <a href="Order" class="btn-order">Order Online</a>
+  </header>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Daily Grind</h1>
+      <p>EST. 2023</p>
+      <a href="#menu" class="btn">Learn More</a>
+    </div>
+    </section>
+  <div class="about-section">
+    <div class="image">
+      <img src="about-img-1.png" alt="About Us" style="width:100%; height:auto; border-radius:10px; margin-top:10px;">
+    </div>
+    <div class="text">
+      <h2>About Us</h2>
+    <p>Welcome to The Daily Grind, your cozy neighborhood café where every cup tells a story. Established in 2023, we are passionate about crafting the perfect coffee experience for our community. Our beans are ethically sourced from the finest growers around the world, ensuring that each sip is rich in flavor and aroma.</p>
+    <br><p>At The Daily Grind, we believe that coffee is more than just a beverage; it's a ritual that brings people together. Whether you're catching up with friends, working on your latest project, or simply taking a moment for yourself, our warm and inviting atmosphere is the perfect backdrop.</p>
+    <br><p>Our menu features a variety of expertly brewed coffees, teas, and delicious pastries made fresh daily. We are committed to sustainability and supporting local businesses, which is why we use eco-friendly practices and partner with local artisans.</p>
+   <br> <p>Thank you for being a part of The Daily Grind family. We look forward to serving you and sharing our love for coffee with you every day.</p>
+ <br><div style="margin-top:8px;">
+        <a href="https://facebook.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    </div>
+  </div>
+<footer>
+ 
+     <div class="container">
+        <div class="column">
+            <h2>Opening Hours</h2>
+            <ul class="hours-list">
+                <li>Monday <span class="closed">Closed</span></li>
+                <li>Tuesday 9:00 - 22:00</li>
+                <li>Wednesday 9:00 - 22:00</li>
+                <li>Thursday 9:00 - 22:00</li>
+                <li>Friday 9:00 - 1:00</li>
+                <li>Saturday 12:00 - 1:00</li>
+                <li>Sunday 9:00 - 22:00</li>
+            </ul>
+        </div>
+        
+        <div class="column">
+            <h2>Contact Us</h2>
+            <ul class="contact-info">
+                <li><span class="email">barista@qodeinteractive.com</span></li>
+                <li>1-444-123-4559</li>
+                <li>Raymond Boulevard 224, New York</li>
+            </ul>
+            <h2>The Last Standard Post</h2>
+            <form>
+                <input type="email" placeholder="Your E-Mail">
+                <button type="submit">E-Mail</button>
+            </form>
+        </div>
+        
+    </div>
+    
+<!-- Add in the <head> section for Font Awesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<!-- Replace the footer section with the following -->
+<div class="footer">
+    © Qode Interactive &nbsp;|&nbsp; 2017 All Rights Reserved
+    <div style="margin-top:8px;">
+        <a href="https://facebook.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        .main {
+            display: flex;
+            gap: 10px;
+            text-align: center;
+            justify-content: center;
+        }
+        .main div {
+            padding: 20px;
+            margin: 10px;
+ justify-items: center;
+        }
+        .main h1 {
+            margin: 0;
+            font-size: 2em;
+            padding: 0;
+        }
+        .hero {
+      height: 100vh;
+      background: url('2.jpeg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero .btn {
+      background: #b5651d;
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 50px;
+}
+.gallery .card img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.gallery .card p {
+  text-align: center;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+   .specials {
+  background: #4a342e;
+  color: #f0e6dc;
+  padding: 50px;
+}
+.specials h2 {
+  margin-bottom: 20px;
+}
+.specials ul {
+  list-style-type: none;
+}
+.specials li {
+  margin: 10px 0;
+}
+.specials li:hover {
+  color: #b5651d;
+}
+
+    </style>
+</head>
+<body>
+    <main class="main">
+        <div>home</div>
+        <div>menu</div>
+        <div>about</div>
+        <div><h1>The <br> Daily Grind</h1></div>
+        <div>Order oline</div>
+        <div>contact</div>
+    </main>
+<section class="hero">
+    <div class="hero-content">
+      <h1>The Daily Grind</h1>
+      <p>EST. 2023</p>
+      <a href="#menu" class="btn">Order Now</a>
+    </div>
+  </section>
+  <br><br>  
+<div></div>
+
+</body>
+</html>

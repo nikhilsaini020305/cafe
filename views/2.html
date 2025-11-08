@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Daily Grind</title>
+  <link rel="stylesheet" href="footer.css">
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255,255,255,0.95);
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #b5651d;
+    }
+
+    .btn-order {
+      background: #b5651d;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: url('2.jpeg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-family: 'Georgia', serif;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero .btn {
+      background: #b5651d;
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 60px;
+      text-align: center;
+    }
+
+    section h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .menu-items, .about-content {
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .menu-items p, .about-content p {
+      margin-bottom: 15px;
+    }
+
+    
+      h3 {
+      font-style: italic;
+      color: #b08a64;
+      margin-bottom: 5px;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #3a2a1a;
+      margin: 10px 0;
+    }
+
+    .booking-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .booking-container input,
+    .booking-container select {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .booking-container button {
+      background-color: #c8a06c;
+      color: white;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .booking-container button:hover {
+      background-color: #a3794f;
+    }
+
+    .powered {
+      font-size: 12px;
+      margin-top: 5px;
+      color: gray;
+      font-style: italic;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: #ece9e2;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 28px;
+      color: #c8a06c;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px 0;
+      color: #2b2b2b;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 15px;
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #c8a06c;
+      letter-spacing: 1px;
+    }
+
+    .card a:hover {
+      color: #a3794f;
+    }
+     .menu-section {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .menu-section h3 {
+      font-style: italic;
+      color: #c8a06c;
+      margin-bottom: 5px;
+    }
+
+    .menu-section h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .menu-section hr {
+      width: 60px;
+      border: 1px solid #c8a06c;
+      margin: 15px auto 40px auto;
+    }
+
+    .menu-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .menu-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .menu-item img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-right: 15px;
+    }
+
+    .menu-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .menu-text h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .menu-text p {
+      margin: 3px 0;
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .new-tag {
+      display: inline-block;
+      background: #c8a06c;
+      color: white;
+      font-size: 12px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-left: 8px;
+    }
+    a{
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+    }
+    .menu{
+border: #333;
+      display: inline-block;
+      margin-top: 30px;
+      padding: 30px 70px;
+      text-align: center;
+      background-color: #c8a06c;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="logo">The Daily Grind</div>
+    <nav>
+      <a href="2">Home</a>
+      <a href="menu">Menu</a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </nav>
+    <a href="Order" class="btn-order">Order Online</a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Daily Grind</h1>
+      <p>EST. 2023</p>
+      <a href="#menu" class="btn">Learn More</a>
+    </div>
+  </section>
+ <h3 style="text-align: center; margin: 30px;">What Happens Here</h3>
+  <h1 style="text-align: center;">COFFEE BUILD YOUR BASE.</h1>
+  <hr style="width: 50px; border: 1px solid #c8a06c; margin: 15px auto;">
+
+  <div class="booking-container">
+    <select>
+      <option>1 Person</option>
+      <option>2 People</option>
+      <option>3 People</option>
+      <option>4 People</option>
+    </select>
+
+    <span>FOR</span>
+    <input type="date" value="2025-09-07">
+
+    <span>AT</span>
+    <input type="time" value="19:00">
+
+    <button>BOOK A TABLE</button>
+  </div>
+<section class="features">
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="h-1-img-1.jpg" alt="Beautiful Place">
+      <h2>01</h2>
+      <h3>BEAUTIFUL PLACE</h3>
+      <p>
+        Alienum phaedrum to rquatos nec eu, vis detraxit periculis ex, 
+        nihil expetendis in mei. Mei an pericula euripidis, hinc partem ei est.
+      </p>
+      <a href="#">READ MORE </a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="h-1-img-2.jpg" alt="Feel the Coffee">
+      <h2>02</h2>
+      <h3>FEEL THE COFFEE</h3>
+      <p>
+        Alienum phaedrum to rquatos nec eu, vis detraxit periculis ex, 
+        nihil expetendis in mei. Mei an pericula euripidis, hinc partem ei est.
+      </p>
+      <a href="#">READ MORE </a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <img src="h-1-img-3.jpg" alt="Full Taste">
+      <h2>03</h2>
+      <h3>FULL TASTE</h3>
+      <p>
+        Alienum phaedrum to rquatos nec eu, vis detraxit periculis ex, 
+        nihil expetendis in mei. Mei an pericula euripidis, hinc partem ei est.
+      </p>
+      <a href="#">READ MORE </a>
+    </div>
+  </section>
+   <section class="menu-section">
+    <h3>What Happens Here</h3>
+    <h1>FAVOURITE COFFEE FLAVOURS.</h1>
+    <hr>
+
+    <div class="menu-container">
+      <!-- Item 1 -->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-150x150.JPG" alt="Caffe Latte">
+        <div class="menu-text">
+          <h4>CAFFE LATTE</h4>
+          <p>Fresh brewed coffee and steamed milk</p>
+        </div>
+        <div class="price">$2.95 <span class="new-tag">New</span></div>
+      </div>
+
+      <!-- Item 2 -->
+       <div class="menu-item">
+        <img src="h-1-list-icon-img-8-150x150.jpg" alt="Iced Caramel Latte">
+        <div class="menu-text">
+          <h4>ICED CARAMEL LATTE</h4>
+          <p>Espresso, Milk, Ice and Caramel Sauce</p>
+        </div>
+        <div class="price">$4.67</div>
+      </div>
+      
+
+      <!-- Item 3 -->
+     <div class="menu-item">
+        <img src="h-1-list-icon-img-2-150x150.jpg" alt="Caffe Mocha">
+        <div class="menu-text">
+          <h4>CAFFE MOCHA</h4>
+          <p>Espresso with Milk, and Whipped Cream</p>
+        </div>
+        <div class="price">$3.67</div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-7-150x150.JPG" alt="Espresso Macchiato">
+        <div class="menu-text">
+          <h4>ESPRESSO MACCHIATO</h4>
+          <p>Rich Espresso with Milk and Foam</p>
+        </div>
+        <div class="price">$2.98</div>
+      </div>
+      <!-- Item 5 -->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-3-150x150.JPG" alt="Caffe Latte">
+        <div class="menu-text">
+          <h4>White Chocolate Mocha </h4>
+          <p>Espresso, White Chocolate, Milk, Ice and Cream</p>
+        </div>
+        <div class="price">$2.79 <span class="new-tag">New</span></div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-9-150x150.jpg" alt="Caffe Mocha">
+        <div class="menu-text">
+          <h4>Caramel Macchiato</h4>
+          <p>Espresso, vanilla-flavored syrup and milk</p>
+        </div>
+        <div class="price">$2.54</div>
+      </div>
+      <!-- Item 7 -->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-4-150x150.JPG" alt="Caffe Latte">
+        <div class="menu-text">
+          <h4>Caffe Americano</h4>
+          <p>Espresso Shots and Light Layer of Crema</p>
+        </div>
+        <div class="price">$3.06 </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-10-150x150.jpg" alt="Caffe Mocha">
+        <div class="menu-text">
+          <h4>Iced Smoked Latte</h4>
+          <p>Espresso, ice, with smoked butterscotch</p>
+        </div>
+        <div class="price">$3.05</div>
+      </div>
+      <!-- Item 9-->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-5-150x150.JPG" alt="Caffe Latte">
+        <div class="menu-text">
+          <h4>Cappuccino</h4>
+          <p>Espresso, and Smoothed Layer of Foam</p>
+        </div>
+        <div class="price">$4.03 </div>
+      </div>
+
+      <!-- Item 10 -->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-11-150x150.jpg" alt="Caffe Mocha">
+        <div class="menu-text">
+          <h4>Iced Caffe Mocha</h4>
+          <p>Espresso, bittersweet mocha sauce, milk and ice</p>
+        </div>
+        <div class="price">$2.60</div>
+      </div>
+      <!-- Item 11 -->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-6-150x150.JPG" alt="Caffe Latte">
+        <div class="menu-text">
+          <h4>Vanilla Latte</h4>
+          <p>Espresso Milk With Flavor,and Cream</p>
+        </div>
+        <div class="price">$3.65 </div>
+      </div>
+
+      <!-- Item 12 -->
+      <div class="menu-item">
+        <img src="h-1-list-icon-img-12-150x150.jpg" alt="Caffe Mocha">
+        <div class="menu-text">
+          <h4>Iced Gingerbread Latte</h4>
+          <p>Espresso, Milk, Ice, and Gingerbread Flavor</p>
+        </div>
+        <div class="price">$3.92</div>
+      </div>
+    </div>
+    <div class="menu"><a href="menu">View Menu</a></div>
+  </section>
+<footer>
+ 
+     <div class="container">
+        <div class="column">
+            <h2>Opening Hours</h2>
+            <ul class="hours-list">
+                <li>Monday <span class="closed">Closed</span></li>
+                <li>Tuesday 9:00 - 22:00</li>
+                <li>Wednesday 9:00 - 22:00</li>
+                <li>Thursday 9:00 - 22:00</li>
+                <li>Friday 9:00 - 1:00</li>
+                <li>Saturday 12:00 - 1:00</li>
+                <li>Sunday 9:00 - 22:00</li>
+            </ul>
+        </div>
+        
+        <div class="column">
+            <h2>Contact Us</h2>
+            <ul class="contact-info">
+                <li><span class="email">barista@qodeinteractive.com</span></li>
+                <li>1-444-123-4559</li>
+                <li>Raymond Boulevard 224, New York</li>
+            </ul>
+            <h2>The Last Standard Post</h2>
+            <form>
+                <input type="email" placeholder="Your E-Mail">
+                <button type="submit">E-Mail</button>
+            </form>
+        </div>
+        
+    </div>
+    
+<!-- Add in the <head> section for Font Awesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<!-- Replace the footer section with the following -->
+<div class="footer">
+    © Qode Interactive &nbsp;|&nbsp; 2017 All Rights Reserved
+    <div style="margin-top:8px;">
+        <a href="https://facebook.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    
+</div>
+</footer>
+</body>
+</html>
