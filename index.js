@@ -8,16 +8,8 @@ const app = express();
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-app.get('/home', (req, res) => {
-    res.sendFile('views/index.html', { root: __dirname });
-});
-app.get('/1', (req, res) => {
-    res.sendFile('views/1.html', { root: __dirname });
-});
-app.get('/2', (req, res) => {
     res.sendFile('views/2.html', { root: __dirname });
 });
 app.get('/menu', (req, res) => {

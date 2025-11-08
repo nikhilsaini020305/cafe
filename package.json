@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
-
   },
   "keywords": [],
   "author": "",
@@ -14,5 +13,13 @@
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nikhilsaini020305/cafe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nikhilsaini020305/cafe/issues"
+  },
+  "homepage": "https://github.com/nikhilsaini020305/cafe#readme"
 }
