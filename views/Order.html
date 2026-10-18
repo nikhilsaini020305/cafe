@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Table - The Daily Grind</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            color: #ccc;
+            background-color: black;
+        }
+
+        /* Booking form */
+        .booking-container {
+            font-size: 30px;
+            width: 100%;
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 20px 15px 0;
+
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .booking-container h2 {
+            margin: 0 0 15px;
+            padding: 0;
+        }
+
+        .booking-container label {
+            display: block;
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+
+.booking-container input,
+.booking-container select {
+    display: block;
+    width: 50%;
+    justify-self: center;
+    background-color: white;
+    color: black;
+    padding: 14px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+        }
+
+        /* Reduce the space around Date and Time */
+        .booking-container label[for="date"] {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        #date {
+            margin: 0;
+        }
+
+        .booking-container label[for="time"] {
+            margin-top: -8px;
+            margin-bottom: 0;
+        }
+
+        #time {
+            margin: 0;
+        }
+
+
+.booking-container button {
+    display: block;
+    width: 20%;
+    justify-self: center;
+
+    background-color: #c8a06c;
+    color: white;
+    padding: 14px 10px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+        .booking-container button:hover {
+            background-color: #a3794f;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .booking-container {
+                width: 100%;
+                padding: 20px 15px 0;
+                margin: 15px auto;
+                gap: 8px;
+                font-size: 24px;
+            }
+
+            .booking-container h2 {
+                margin-bottom: 12px;
+            }
+
+            .booking-container input,
+            .booking-container select {
+                width: 70%;
+                
+            }
+            .booking-container button{
+                margin: 20px;
+                width: 50%;
+            }
+            .booking-container label[for="time"] {
+                margin-top: -6px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">The Daily Grind</div>
+
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="menu">Menu</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="contact">Contact</a></li>
+            <li><a href="Order" class="btn-order">Order Online</a></li>
+        </ul>
+    </nav>
+
+    <!-- Booking Form -->
+    <form action="/submitA" method="post" class="booking-container">
+
+        <h2>Book a Table</h2>
+
+        <label for="fName">Your Name</label>
+        <input type="text" id="fName" name="fName" required>
+
+        <label for="people">Select Number of People:</label>
+        <select id="people" name="people" required>
+            <option value="1">1 Person</option>
+            <option value="2">2 People</option>
+            <option value="3">3 People</option>
+            <option value="4">4 People</option>
+        </select>
+
+        <label for="date">Select Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <label for="time">Select Time:</label>
+        <input
+            type="time"
+            id="time"
+            name="time"
+            min="09:00"
+            max="22:00"
+            required
+        >
+
+        <button type="submit">BOOK A TABLE</button>
+
+    </form>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+
+            <div class="column">
+                <h2>Opening Hours</h2>
+
+                <ul class="hours-list">
+                    <li>Monday <span class="closed">Closed</span></li>
+                    <li>Tuesday 9:00 - 22:00</li>
+                    <li>Wednesday 9:00 - 22:00</li>
+                    <li>Thursday 9:00 - 22:00</li>
+                    <li>Friday 9:00 - 1:00</li>
+                    <li>Saturday 12:00 - 1:00</li>
+                    <li>Sunday 9:00 - 22:00</li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h2>Contact Us</h2>
+
+                <ul class="contact-info">
+                    <li>
+                        <span class="email">
+                            barista@qodeinteractive.com
+                        </span>
+                    </li>
+                    <li>1-444-123-4559</li>
+                    <li>Raymond Boulevard 224, New York</li>
+                </ul>
+
+                <h2>The Last Standard Post</h2>
+
+                <form action="#" method="post">
+                    <input type="email" placeholder="Your E-Mail">
+                    <button type="submit">E</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            © Qode Interactive &nbsp;|&nbsp; 2017 All Rights Reserved
+
+            <div style="margin-top: 8px;">
+                <a href="https://facebook.com"
+                   style="color:#e6e6e6;margin:0 7px;">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://twitter.com"
+                   style="color:#e6e6e6;margin:0 7px;">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <a href="https://instagram.com"
+                   style="color:#e6e6e6;margin:0 7px;">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Format date as YYYY-MM-DD
+        function formatDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, "0");
+            const day = String(date.getDate()).padStart(2, "0");
+
+            return `${year}-${month}-${day}`;
+        }
+
+        // Set the booking date range
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateInput = document.getElementById("date");
+
+            const today = new Date();
+            const todayFormatted = formatDate(today);
+
+            const fiveDaysLater = new Date();
+            fiveDaysLater.setDate(today.getDate() + 5);
+
+            const fiveDaysLaterFormatted = formatDate(fiveDaysLater);
+
+            dateInput.min = todayFormatted;
+            dateInput.max = fiveDaysLaterFormatted;
+            dateInput.value = todayFormatted;
+        });
+
+        // Mobile navigation
+        function toggleMenu() {
+            const navLinks = document.getElementById("navLinks");
+            navLinks.classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>

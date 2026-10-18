@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Menu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff8f2;
+        }
+
+        .container {
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .one{
+            padding: 20px;
+            text-align: center;
+            color: #6f4e37;
+            margin-bottom: 25px;
+        }
+
+   /* Food menu */
+        .form {
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .form > label {
+            display: block;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #eee0d4;
+            border-radius: 8px;
+            background: #fffdfb;
+            line-height: 1.7;
+            cursor: pointer;
+            overflow-wrap: anywhere;
+        }
+
+        .form > label:hover {
+            background: #fff3e7;
+            border-color: #e67300;
+        }
+
+        .form input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #e67300;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        .form > label p {
+            margin: 5px 0;
+            color: #777;
+            font-size: 14px;
+        }
+
+        /* Quantity controls */
+        .quantity-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .form .quantity {
+            width: 85px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .quantity-row button {
+            width: 34px;
+            height: 34px;
+            border: none;
+            border-radius: 5px;
+            background: #c8a06c;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .quantity-row button:hover {
+            background: #a3794f;
+        }
+
+        /* Total price */
+        #displayTotal {
+            margin: 25px 0 15px;
+            text-align: right;
+            font-size: 23px;
+            font-weight: bold;
+            color: #e67300;
+        }
+
+        /* Submit button */
+        .form > button[type="submit"] {
+            display: block;
+            width: 25%;
+            min-width: 150px;
+            margin: 20px auto 0;
+            padding: 14px 20px;
+            background: #c8a06c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .form > button[type="submit"]:hover {
+            background: #a3794f;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                margin: 85px 10px 20px;
+                font-size: 30px;
+            }
+
+            .form {
+                width: 95%;
+                padding: 15px;
+                margin: 15px auto 30px;
+            }
+
+            .form > label {
+                padding: 12px;
+                margin-bottom: 12px;
+                font-size: 14px;
+            }
+
+            .form > label p {
+                font-size: 13px;
+            }
+
+            .form .quantity {
+                width: 75px;
+            }
+
+            #displayTotal {
+                font-size: 20px;
+            }
+
+            .form > button[type="submit"] {
+                width: 50%;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .form {
+                width: 96%;
+                padding: 10px;
+            }
+
+            .form > label {
+                padding: 10px;
+                font-size: 13px;
+            }
+
+            .form > button[type="submit"] {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+   <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">The Daily Grind</div>
+
+        <button type="button" class="menu-btn"
+                onclick="toggleMenu()" aria-label="Toggle navigation">
+            ☰
+        </button>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="/">Home</a></li>
+            <li><a href="menu">Menu</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="contact">Contact</a></li>
+            <li><a href="Order" class="btn-order">Order Online</a></li>
+        </ul>
+    </nav>
+
+<div class="container">
+
+    <h2 class="one">☕ Cafe Menu</h2>
+
+    <!-- Menu form -->
+    <form action="/order" method="POST" class="form" id="orderForm"
+          onsubmit="return prepareOrder()">
+
+        <!-- Coffee 1 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="CAFFE LATTE" data-price="500"
+                   onchange="calculateTotal()">
+            <strong>CAFFE LATTE</strong>
+            <p>Fresh brewed coffee and steamed milk</p>
+            Price: ₹500
+
+            <div class="quantity-row" >
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty1', -1)">−</button>
+                <input type="number" id="qty1" class="quantity"
+                       name="quantity_CAFFE_LATTE"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty1', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 2 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="ICED CARAMEL LATTE" data-price="500"
+                   onchange="calculateTotal()">
+            <strong>ICED CARAMEL LATTE</strong>
+            <p>Espresso, milk, ice and caramel sauce</p>
+            Price: ₹500
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty2', -1)">−</button>
+                <input type="number" id="qty2" class="quantity"
+                       name="quantity_ICED_CARAMEL_LATTE"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty2', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 3 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="CAFFE MOCHA" data-price="400"
+                   onchange="calculateTotal()">
+            <strong>CAFFE MOCHA</strong>
+            <p>Espresso with milk and whipped cream</p>
+            Price: ₹400
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty3', -1)">−</button>
+                <input type="number" id="qty3" class="quantity"
+                       name="quantity_CAFFE_MOCHA"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty3', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 4 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="ESPRESSO MACCHIATO" data-price="400"
+                   onchange="calculateTotal()">
+            <strong>ESPRESSO MACCHIATO</strong>
+            <p>Rich espresso with milk and foam</p>
+            Price: ₹400
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty4', -1)">−</button>
+                <input type="number" id="qty4" class="quantity"
+                       name="quantity_ESPRESSO_MACCHIATO"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty4', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 5 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="White Chocolate Mocha" data-price="400"
+                   onchange="calculateTotal()">
+            <strong>White Chocolate Mocha</strong>
+            <p>Espresso, white chocolate, milk, ice and cream</p>
+            Price: ₹400
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty5', -1)">−</button>
+                <input type="number" id="qty5" class="quantity"
+                       name="quantity_WHITE_CHOCOLATE_MOCHA"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty5', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 6 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="Caramel Macchiato" data-price="450"
+                   onchange="calculateTotal()">
+            <strong>Caramel Macchiato</strong>
+            <p>Espresso, vanilla-flavored syrup and milk</p>
+            Price: ₹450
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty6', -1)">−</button>
+                <input type="number" id="qty6" class="quantity"
+                       name="quantity_CARAMEL_MACCHIATO"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty6', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 7 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="Caffe Americano" data-price="300"
+                   onchange="calculateTotal()">
+            <strong>Caffe Americano</strong>
+            <p>Espresso shots and a light layer of crema</p>
+            Price: ₹300
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty7', -1)">−</button>
+                <input type="number" id="qty7" class="quantity"
+                       name="quantity_CAFFE_AMERICANO"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty7', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 8 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="Iced Smoked Latte" data-price="500"
+                   onchange="calculateTotal()">
+            <strong>Iced Smoked Latte</strong>
+            <p>Espresso, ice and smoked butterscotch</p>
+            Price: ₹500
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty8', -1)">−</button>
+                <input type="number" id="qty8" class="quantity"
+                       name="quantity_ICED_SMOKED_LATTE"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty8', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 9 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="Cappuccino" data-price="500"
+                   onchange="calculateTotal()">
+            <strong>Cappuccino</strong>
+            <p>Espresso and a smooth layer of foam</p>
+            Price: ₹500
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty9', -1)">−</button>
+                <input type="number" id="qty9" class="quantity"
+                       name="quantity_CAPPUCCINO"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty9', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 10 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="Iced Caffe Mocha" data-price="500"
+                   onchange="calculateTotal()">
+            <strong>Iced Caffe Mocha</strong>
+            <p>Espresso, mocha sauce, milk and ice</p>
+            Price: ₹500
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty10', -1)">−</button>
+                <input type="number" id="qty10" class="quantity"
+                       name="quantity_ICED_CAFFE_MOCHA"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty10', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 11 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="Vanilla Latte" data-price="600"
+                   onchange="calculateTotal()">
+            <strong>Vanilla Latte</strong>
+            <p>Espresso, milk, vanilla flavor and cream</p>
+            Price: ₹600
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty11', -1)">−</button>
+                <input type="number" id="qty11" class="quantity"
+                       name="quantity_VANILLA_LATTE"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty11', 1)">+</button>
+            </div>
+        </label>
+
+        <!-- Coffee 12 -->
+        <label>
+            <input type="checkbox" name="items"
+                   value="Iced Gingerbread Latte" data-price="300"
+                   onchange="calculateTotal()">
+            <strong>Iced Gingerbread Latte</strong>
+            <p>Espresso, milk, ice and gingerbread flavor</p>
+            Price: ₹300
+
+            <div class="quantity-row">
+                <span>Quantity:</span>
+                <button type="button" onclick="changeQuantity(event, 'qty12', -1)">−</button>
+                <input type="number" id="qty12" class="quantity"
+                       name="quantity_ICED_GINGERBREAD_LATTE"
+                       min="1" max="99" value="1"
+                       onchange="calculateTotal()">
+                <button type="button" onclick="changeQuantity(event, 'qty12', 1)">+</button>
+            </div>
+        </label>
+
+        <p id="displayTotal">Total: ₹0</p>
+        <input type="hidden" id="total" name="total" value="0">
+        <button type="submit">Submit Order</button>
+    </form>
+</div>
+    <footer>
+        <div class="container">
+
+            <div class="column">
+                <h2>Opening Hours</h2>
+                <ul class="hours-list">
+                    <li>Monday <span class="closed">Closed</span></li>
+                    <li>Tuesday 9:00 - 22:00</li>
+                    <li>Wednesday 9:00 - 22:00</li>
+                    <li>Thursday 9:00 - 22:00</li>
+                    <li>Friday 9:00 - 1:00</li>
+                    <li>Saturday 12:00 - 1:00</li>
+                    <li>Sunday 9:00 - 22:00</li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <h2>Contact Us</h2>
+                <ul class="contact-info">
+                    <li>barista@qodeinteractive.com</li>
+                    <li>1-444-123-4559</li>
+                    <li>Raymond Boulevard 224, New York</li>
+                </ul>
+
+                <h2>The Last Standard Post</h2>
+                <form action="#" method="post">
+                    <input type="email" placeholder="Your E-Mail">
+                    <button type="submit">E-Mail</button>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            © Qode Interactive &nbsp;|&nbsp; 2017 All Rights Reserved
+
+            <div style="margin-top:8px;">
+                <a href="https://facebook.com"
+                   style="color:#e6e6e6;margin:0 7px;">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="https://twitter.com"
+                   style="color:#e6e6e6;margin:0 7px;">
+                    <i class="fab fa-twitter"></i>
+                </a>
+
+                <a href="https://instagram.com"
+                   style="color:#e6e6e6;margin:0 7px;">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+<script src="menu.js"></script>
+<script>
+     // Mobile navigation
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+          // Change quantity with + and - buttons
+        function changeQuantity(event, id, amount) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            const input = document.getElementById(id);
+
+            let quantity = parseInt(input.value, 10) || 1;
+            quantity += amount;
+
+            quantity = Math.max(1, Math.min(99, quantity));
+            input.value = quantity;
+
+            calculateTotal();
+        }
+
+        // Calculate selected items and their quantities
+        function calculateTotal() {
+            let total = 0;
+
+            const checkboxes = document.querySelectorAll(
+                '.form input[name="items"]:checked'
+            );
+
+            checkboxes.forEach(cb => {
+                const itemLabel = cb.closest('label');
+                const quantityInput = itemLabel.querySelector('.quantity');
+
+                let quantity = parseInt(quantityInput.value, 10);
+
+                if (!Number.isInteger(quantity) || quantity < 1) {
+                    quantity = 1;
+                    quantityInput.value = 1;
+                }
+
+                if (quantity > 99) {
+                    quantity = 99;
+                    quantityInput.value = 99;
+                }
+
+                total += Number(cb.dataset.price) * quantity;
+            });
+
+            document.getElementById('total').value = total;
+            document.getElementById('displayTotal').innerText =
+                'Total: ₹' + total.toLocaleString('en-IN');
+        }
+
+        // Require at least one item before submission
+        function prepareOrder() {
+            const selected = document.querySelectorAll(
+                '.form input[name="items"]:checked'
+            );
+
+            if (selected.length === 0) {
+                alert('Please select at least one coffee item.');
+                return false;
+            }
+
+            calculateTotal();
+            return true;
+        }
+
+</script>
+</body>
+</html>
