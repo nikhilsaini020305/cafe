@@ -1,3 +1,4 @@
+<<<<<<< HEAD
        
 * {
     margin: 0;
@@ -86,6 +87,61 @@
 
     /* Hero Section */
    
+=======
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255,255,255,0.95);
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #b5651d;
+    }
+
+    .btn-order {
+      background: #b5651d;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Hero Section */
+   
+
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
     .hero::after {
       content: "";
       position: absolute;

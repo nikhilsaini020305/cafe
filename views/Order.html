@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Book a Table - The Daily Grind</title>
 
     <link rel="stylesheet" href="style.css">
@@ -290,3 +294,225 @@
 
 </body>
 </html>
+=======
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="footer.css">
+<style>
+ * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: white;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255,255,255,0.95);
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #b5651d;
+    }
+
+    .btn-order {
+      background: #b5651d;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+ .booking-container {
+  font-size: 30px;
+      padding-top: 100px;
+  display: grid;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .booking-container input,
+    .booking-container select {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .booking-container button {
+      background-color: #c8a06c;
+      color: white;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .booking-container button:hover {
+      background-color: #a3794f;
+    }
+a {
+      color: white;
+      text-decoration: none;
+    }
+</style>
+<body>
+     <header>
+    <div class="logo">The Daily Grind</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="menu">Menu</a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </nav>
+    <a href="Order" class="btn-order">Order Online</a>
+  </header>
+  <form action="/submitA" method="post"class="booking-container">
+    <h2>Book a Table</h2>
+    <label for="Name">Your Name</label>
+    <input type="text" id="fName" name="fName" required>
+       <label for="people">Select Number of People:</label>
+  <select type="number" id="people" name="people" required>
+    <option>1 Person</option>
+    <option>2 People</option>
+    <option>3 People</option>
+    <option>4 People</option>
+  </select>
+   <label for="date">Select Date:</label>
+  <input type="date" id="date" name="date" required>
+
+<label for="time">Select Time:</label>
+      <input type="time" id="time" name="time"  min="09:00" max="22:00" required>
+    <button onclick="{handleBooking}">BOOK A TABLE</button>
+    </form>
+ 
+  <br><br>
+  <footer>
+ 
+     <div class="container">
+        <div class="column">
+            <h2>Opening Hours</h2>
+            <ul class="hours-list">
+                <li>Monday <span class="closed">Closed</span></li>
+                <li>Tuesday 9:00 - 22:00</li>
+                <li>Wednesday 9:00 - 22:00</li>
+                <li>Thursday 9:00 - 22:00</li>
+                <li>Friday 9:00 - 1:00</li>
+                <li>Saturday 12:00 - 1:00</li>
+                <li>Sunday 9:00 - 22:00</li>
+            </ul>
+        </div>
+        
+        <div class="column">
+            <h2>Contact Us</h2>
+            <ul class="contact-info">
+                <li><span class="email">barista@qodeinteractive.com</span></li>
+                <li>1-444-123-4559</li>
+                <li>Raymond Boulevard 224, New York</li>
+            </ul>
+            <h2>The Last Standard Post</h2>
+            <form>
+                <input type="email" placeholder="Your E-Mail">
+                <button type="submit">E</button>
+            </form>
+        </div>
+        
+    </div>
+    
+<!-- Add in the <head> section for Font Awesome icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<!-- Replace the footer section with the following -->
+<div class="footer">
+    © Qode Interactive &nbsp;|&nbsp; 2017 All Rights Reserved
+    <div style="margin-top:8px;">
+        <a href="https://facebook.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com" style="color:#e6e6e6;margin:0 7px;">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    
+</div>
+</footer>
+<script>
+    // 1. Helper function to format the Date object into the required "YYYY-MM-DD" string
+    function formatDate(date) {
+        const year = date.getFullYear();
+        // Month is 0-indexed, so add 1 and pad with zero if needed
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        // Pad day with zero if needed
+        const day = String(date.getDate()).padStart(2, '0');
+
+        return `${year}-${month}-${day}`;
+    }
+
+    // 2. Main function to set the date range when the page is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        const dateInput = document.getElementById('date');
+        
+        // --- Calculate Today and 5 Days Later ---
+
+        // Get Today's Date
+        const today = new Date();
+        const todayFormatted = formatDate(today);
+
+        // Get the date 5 days from Today
+        const fiveDaysLater = new Date();
+        // Add 5 days to the current date
+        fiveDaysLater.setDate(today.getDate() + 5); 
+        const fiveDaysLaterFormatted = formatDate(fiveDaysLater);
+
+        // --- Automatically Apply the Date Range ---
+        
+        // Sets the earliest selectable date to Today (e.g., "2025-10-26")
+        dateInput.min = todayFormatted;
+
+        // Sets the latest selectable date to 5 days later (e.g., "2025-10-31")
+        dateInput.max = fiveDaysLaterFormatted;
+        
+        // Optional: Pre-select today's date in the input field
+        dateInput.value = todayFormatted;
+
+        console.log(`Booking date range set from ${todayFormatted} to ${fiveDaysLaterFormatted}`);
+    });
+</script>
+</body>
+</html>
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c

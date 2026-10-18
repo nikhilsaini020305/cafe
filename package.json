@@ -12,7 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^17.2.3",
+<<<<<<< HEAD
     "express": "^5.2.1"
+=======
+    "express": "^5.1.0"
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
   },
   "repository": {
     "type": "git",
@@ -21,6 +25,10 @@
   "bugs": {
     "url": "https://github.com/nikhilsaini020305/cafe/issues"
   },
+<<<<<<< HEAD
   "homepage": "https://github.com/nikhilsaini020305/cafe#readme",
   "type": "commonjs"
+=======
+  "homepage": "https://github.com/nikhilsaini020305/cafe#readme"
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
 }

@@ -5,8 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Daily Grind</title>
   <link rel="stylesheet" href="footer.css">
+<<<<<<< HEAD
   <link rel="stylesheet" href="style.css">
   <style>
+=======
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: rgba(255,255,255,0.95);
+      z-index: 1000;
+    }
+
+    header .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #b5651d;
+    }
+
+    .btn-order {
+      background: #b5651d;
+      color: #fff;
+      padding: 8px 15px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
 
     /* Hero Section */
     .hero {
@@ -21,6 +76,10 @@
     }
 
     .hero::after {
+<<<<<<< HEAD
+=======
+      content: "";
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
       position: absolute;
       top: 0;
       left: 0;
@@ -258,14 +317,26 @@
       border-radius: 3px;
       margin-left: 8px;
     }
+<<<<<<< HEAD
     .menu{
       border: #333;
+=======
+    a{
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+    }
+    .menu{
+border: #333;
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
       display: inline-block;
       margin-top: 30px;
       padding: 30px 70px;
       text-align: center;
       background-color: #c8a06c;
     }
+<<<<<<< HEAD
 
 @media (max-width: 768px) {
 .booking-container{
@@ -277,11 +348,14 @@ span{
 }
 }
 
+=======
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
+<<<<<<< HEAD
     <nav class="navbar">
     <div class="logo">The Daily Grind</div>
 
@@ -296,6 +370,19 @@ span{
 
     </ul>
 </nav>
+=======
+  <header>
+    <div class="logo">The Daily Grind</div>
+    <nav>
+      <a href="/">Home</a>
+      <a href="menu">Menu</a>
+      <a href="about">About</a>
+      <a href="contact">Contact</a>
+    </nav>
+    <a href="Order" class="btn-order">Order Online</a>
+  </header>
+
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
@@ -484,7 +571,11 @@ span{
         <div class="price">$3.92</div>
       </div>
     </div>
+<<<<<<< HEAD
     <div class="menu"><a href="menu"style="color:#e6e6e6;text-decoration: none;padding: 10px 20px;font-weight: bold;">View Menu</a></div>
+=======
+    <div class="menu"><a href="menu">View Menu</a></div>
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
   </section>
 <footer>
  
@@ -538,6 +629,7 @@ span{
     
 </div>
 </footer>
+<<<<<<< HEAD
 <script>
   function toggleMenu() {
     const navLinks = document.getElementById("navLinks");
@@ -545,5 +637,7 @@ span{
     navLinks.classList.toggle("active");
 }
 </script>
+=======
+>>>>>>> b0e89408ea87c589805c31278365071c3823f23c
 </body>
 </html>
